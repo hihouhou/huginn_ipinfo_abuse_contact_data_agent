@@ -28,7 +28,8 @@ description do
           "email": "XXXXXXXXXXXXXXXXXXXXXX",
           "name": "XXXXXXXXXXXXXXXXXXXX",
           "network": "XXXXXXXXXXXXXX",
-          "phone": "XXXXXXXXXX"
+          "phone": "XXXXXXXXXX",
+          "ip": "XXXXXXXXXX"
         }
 
     MD
@@ -112,13 +113,17 @@ description do
       end
 
       log "request  status : #{response.code}"
+
+      payload = JSON.parse(response.body)
   
       if interpolated['debug'] == 'true'
-        log "response body : #{response.body}"
+        log "response body : #{payload}"
       end
+
+      payload[:ip] = "#{interpolated['ip']}"
   
       if interpolated['emit_events'] == 'true'
-        create_event :payload => response.body
+        create_event :payload => payload
       end
     end
   end
