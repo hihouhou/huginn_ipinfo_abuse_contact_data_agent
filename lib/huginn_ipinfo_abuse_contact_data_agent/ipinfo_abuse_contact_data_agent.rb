@@ -4,13 +4,16 @@ module Agents
     can_dry_run!
     no_bulk_receive!
     default_schedule '1h'
-description do
+
+    description do
       <<-MD
       The Github notification agent fetches notifications and creates an event by notification.
 
       `debug` is used for verbose mode.
 
       `ip` for the ip wanted.
+
+      `logs` is not mandatory, just available if an email agent is after this one for completing for example an abuse report.
 
        If `emit_events` is set to `true`, the server response will be emitted as an Event. No data processing
        will be attempted by this Agent, so the Event's "body" value will always be raw text.
@@ -39,6 +42,7 @@ description do
         'ip' => '',
         'debug' => 'false',
         'expected_receive_period_in_days' => '2',
+        'logs' => '',
         'emit_events' => 'true'
       }
     end
@@ -46,6 +50,7 @@ description do
     form_configurable :debug, type: :boolean
     form_configurable :expected_receive_period_in_days, type: :string
     form_configurable :ip, type: :string
+    form_configurable :logs, type: :string
     form_configurable :emit_events, type: :boolean
 
     def validate_options
@@ -120,6 +125,7 @@ description do
         log "response body : #{payload}"
       end
 
+      payload[:logs] = "#{interpolated['logs']}"
       payload[:ip] = "#{interpolated['ip']}"
   
       if interpolated['emit_events'] == 'true'
