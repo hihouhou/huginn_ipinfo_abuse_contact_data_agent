@@ -92,18 +92,19 @@ module Agents
 
     def fetch
 
-      uri = URI.parse("https://ipinfo.io/ip-abuse-contact-api")
+      uri = URI.parse("https://ipinfo.io/products/ip-abuse-contact-api")
       request = Net::HTTP::Post.new(uri)
       request.content_type = "application/x-www-form-urlencoded; charset=UTF-8"
       request["Authority"] = "ipinfo.io"
       request["Accept"] = "*/*"
       request["X-Requested-With"] = "XMLHttpRequest"
-      request["User-Agent"] = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.183 Safari/537.36"
+      request["User-Agent"] = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.115 Safari/537.36"
+      request["Sec-Gpc"] = "1"
       request["Origin"] = "https://ipinfo.io"
       request["Sec-Fetch-Site"] = "same-origin"
       request["Sec-Fetch-Mode"] = "cors"
       request["Sec-Fetch-Dest"] = "empty"
-      request["Referer"] = "https://ipinfo.io/ip-abuse-contact-api"
+      request["Referer"] = "https://ipinfo.io/products/ip-abuse-contact-api"
       request["Accept-Language"] = "fr,en-US;q=0.9,en;q=0.8"
       request.set_form_data(
         "input" => "#{interpolated['ip']}",
