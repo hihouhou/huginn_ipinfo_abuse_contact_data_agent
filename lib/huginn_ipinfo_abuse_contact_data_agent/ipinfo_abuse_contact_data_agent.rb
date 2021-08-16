@@ -40,6 +40,8 @@ module Agents
     def default_options
       {
         'ip' => '',
+        'host' => '',
+        'type' => '',
         'debug' => 'false',
         'expected_receive_period_in_days' => '2',
         'logs' => '',
@@ -50,6 +52,8 @@ module Agents
     form_configurable :debug, type: :boolean
     form_configurable :expected_receive_period_in_days, type: :string
     form_configurable :ip, type: :string
+    form_configurable :host, type: :string
+    form_configurable :type, type: :string
     form_configurable :logs, type: :string
     form_configurable :emit_events, type: :boolean
 
@@ -128,6 +132,8 @@ module Agents
 
       payload[:logs] = "#{interpolated['logs']}"
       payload[:ip] = "#{interpolated['ip']}"
+      payload[:host] = "#{interpolated['host']}"
+      payload[:type] = "#{interpolated['type']}"
   
       if interpolated['emit_events'] == 'true'
         create_event :payload => payload
