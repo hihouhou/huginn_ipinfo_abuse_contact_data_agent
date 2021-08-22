@@ -25,16 +25,16 @@ module Agents
 
     event_description <<-MD
       Events look like this:
-        {
-          "address": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-          "country": "XX",
-          "email": "XXXXXXXXXXXXXXXXXXXXXX",
-          "name": "XXXXXXXXXXXXXXXXXXXX",
-          "network": "XXXXXXXXXXXXXX",
-          "phone": "XXXXXXXXXX",
-          "ip": "XXXXXXXXXX"
-        }
 
+          {
+            "address": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+            "country": "XX",
+            "email": "XXXXXXXXXXXXXXXXXXXXXX",
+            "name": "XXXXXXXXXXXXXXXXXXXX",
+            "network": "XXXXXXXXXXXXXX",
+            "phone": "XXXXXXXXXX",
+            "ip": "XXXXXXXXXX"
+          }
     MD
 
     def default_options
